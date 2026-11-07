@@ -4,6 +4,8 @@ const STORAGE_KEY = "paperAdventureProgressV1";
 const app = document.querySelector("#app");
 const toast = document.querySelector("#toast");
 const scoreEl = document.querySelector("#header-score");
+const VIDEO_ROOT = "https://raw.githubusercontent.com/cew123452000-Abby/recycle-squad-yilan/main/games/paper/videos/";
+const videoUrl = file => VIDEO_ROOT + encodeURIComponent(file);
 let levelSession = null;
 let timerId = null;
 
@@ -88,7 +90,7 @@ function renderLevel(id) {
       <div class="level-hero-copy"><p class="eyebrow">LEVEL 0${id}｜${level.subtitle}</p><h1>${level.title}</h1><p class="lead">${level.goal}</p></div>
     </section>
     <div class="level-layout">
-      <section class="panel"><h2>任務動畫</h2><div class="video-box"><video controls playsinline preload="none" poster="assets/scenes/${level.image}"><source src="videos/${level.video}" type="video/mp4">你的瀏覽器無法播放影片。</video></div><p style="margin:.8rem 0 0;color:var(--muted)">影片已包含中文配音與繁體中文字幕。</p></section>
+      <section class="panel"><h2>任務動畫</h2><div class="video-box"><video controls playsinline preload="none" poster="assets/scenes/${level.image}"><source src="${videoUrl(level.video)}" type="video/mp4">你的瀏覽器無法播放影片。</video></div><p style="margin:.8rem 0 0;color:var(--muted)">影片已包含中文配音與繁體中文字幕。</p></section>
       <aside class="panel lesson-card"><p class="eyebrow" style="color:var(--orange)">本關任務</p><h2 style="font-size:1.5rem">${level.goal}</h2><p><b>過關條件：</b>${level.pass}</p><div class="action-row"><button class="btn btn-primary" data-action="start-game" data-level="${id}">看完了，開始任務</button><button class="btn btn-secondary" data-action="home">回冒險地圖</button></div></aside>
     </div>
     <section id="game-stage" class="panel game-stage hidden"></section>`;

@@ -4,6 +4,8 @@ const STORAGE_KEY = "tablewareCleanSortStackV1";
 const app = document.querySelector("#app");
 const toast = document.querySelector("#toast");
 const scoreEl = document.querySelector("#header-score");
+const VIDEO_ROOT = "https://raw.githubusercontent.com/cew123452000-Abby/recycle-squad-yilan/main/games/tableware/videos/";
+const videoUrl = file => VIDEO_ROOT + encodeURIComponent(file);
 let session = null;
 
 const levels = [
@@ -46,7 +48,7 @@ function renderLevel(id){
   if(!isUnlocked(id)){notify("請先完成前一關喔！");return renderHome();}
   session=null;const l=levels[id-1];
   app.innerHTML=`<section class="level-hero"><img src="assets/scenes/${l.image}" alt="${l.title}教學動畫場景"><div class="level-hero-copy"><p class="eyebrow">LEVEL 0${id}｜${l.subtitle}</p><h1>${l.title}</h1><p class="lead">${l.goal}</p></div></section>
-    <div class="level-layout"><section class="panel"><h2>先看任務動畫</h2><div class="video-box"><video controls playsinline preload="none" poster="assets/scenes/${l.image}"><source src="videos/${l.video}" type="video/mp4">你的瀏覽器無法播放影片。</video></div><p style="margin:.8rem 0 0;color:var(--muted)">影片已包含中文配音與臺灣繁體中文字幕。</p></section><aside class="panel lesson-card"><p class="eyebrow" style="color:var(--orange)">本關任務</p><h2 style="font-size:1.5rem">${l.goal}</h2><p><b>過關條件：</b>${l.pass}</p><div class="action-row"><button class="btn btn-primary" data-action="start" data-level="${id}">看完了，開始任務</button><button class="btn btn-secondary" data-action="home">回學習地圖</button></div></aside></div><section id="game-stage" class="panel game-stage hidden"></section>`;
+    <div class="level-layout"><section class="panel"><h2>先看任務動畫</h2><div class="video-box"><video controls playsinline preload="none" poster="assets/scenes/${l.image}"><source src="${videoUrl(l.video)}" type="video/mp4">你的瀏覽器無法播放影片。</video></div><p style="margin:.8rem 0 0;color:var(--muted)">影片已包含中文配音與臺灣繁體中文字幕。</p></section><aside class="panel lesson-card"><p class="eyebrow" style="color:var(--orange)">本關任務</p><h2 style="font-size:1.5rem">${l.goal}</h2><p><b>過關條件：</b>${l.pass}</p><div class="action-row"><button class="btn btn-primary" data-action="start" data-level="${id}">看完了，開始任務</button><button class="btn btn-secondary" data-action="home">回學習地圖</button></div></aside></div><section id="game-stage" class="panel game-stage hidden"></section>`;
   goTop();
 }
 

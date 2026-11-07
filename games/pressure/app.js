@@ -4,6 +4,8 @@ const STORAGE_KEY = "pressureContainerSafetyQuestV1";
 const app = document.querySelector("#app");
 const toast = document.querySelector("#toast");
 const scoreEl = document.querySelector("#header-score");
+const VIDEO_ROOT = "https://raw.githubusercontent.com/cew123452000-Abby/recycle-squad-yilan/main/games/pressure/videos/";
+const videoUrl = file => VIDEO_ROOT + encodeURIComponent(file);
 let session = null;
 let toastTimer = null;
 
@@ -94,7 +96,7 @@ function renderLearning(){
       <div class="section-head"><div><h2>影片學習站</h2><p>已完成 ${completed}/4。影片包含中文配音與燒錄臺灣繁體中文字幕。</p></div><button class="btn btn-secondary" data-action="home">回首頁</button></div>
       <div class="video-grid">${videos.map((video,index)=>`
         <article class="video-card ${state.watched[index]?"watched":""}">
-          <div class="video-frame"><video controls playsinline preload="metadata" poster="assets/scenes/${video.poster}" data-learning-video="${index}"><source src="videos/${video.file}" type="video/mp4">你的瀏覽器無法播放影片。</video></div>
+          <div class="video-frame"><video controls playsinline preload="metadata" poster="assets/scenes/${video.poster}" data-learning-video="${index}"><source src="${videoUrl(video.file)}" type="video/mp4">你的瀏覽器無法播放影片。</video></div>
           <div class="video-copy"><span class="video-status">${state.watched[index]?"已完成":"尚未完成"}</span><h3>${video.id}. ${video.title}</h3><p>${video.summary}</p></div>
         </article>`).join("")}</div>
       <div class="panel" style="margin-top:1.2rem;text-align:center"><p><b>${allVideosDone()?"四段動畫學習完成，可以開始五關挑戰！":"完成四段影片後，第一關會自動解鎖。"}</b></p><div class="action-row" style="justify-content:center"><button class="btn btn-primary" data-action="map" ${allVideosDone()||state.teacherMode?"":"disabled"}>前往闖關地圖</button>${state.teacherMode?'<button class="btn btn-secondary" data-action="mark-all-videos">教師：標記四段完成</button>':""}</div></div>
@@ -151,7 +153,7 @@ function renderLevel(id){
   app.innerHTML=`
     <section class="level-hero"><img src="assets/scenes/${level.image}" alt="${level.title}動畫場景"><div class="level-hero-copy"><p class="eyebrow">LEVEL 0${id}｜${level.subtitle}</p><h1>${level.title}</h1><p class="lead">${level.goal}</p></div></section>
     <div class="level-layout">
-      <section class="panel"><h2>任務前複習</h2><div class="video-stack">${related.map(video=>`<div><div class="video-box"><video controls playsinline preload="none" poster="assets/scenes/${video.poster}"><source src="videos/${video.file}" type="video/mp4"></video></div><p><b>${video.title}</b></p></div>`).join("")}</div></section>
+      <section class="panel"><h2>任務前複習</h2><div class="video-stack">${related.map(video=>`<div><div class="video-box"><video controls playsinline preload="none" poster="assets/scenes/${video.poster}"><source src="${videoUrl(video.file)}" type="video/mp4"></video></div><p><b>${video.title}</b></p></div>`).join("")}</div></section>
       <aside class="panel lesson-card"><p class="eyebrow" style="color:var(--orange)">本關任務</p><h2>${level.goal}</h2><p><b>過關條件：</b>${level.pass}</p><ul><li>先讀完題目再作答。</li><li>答錯可從即時回饋學習。</li><li>實際處理一律交由成人。</li></ul><div class="action-row"><button class="btn btn-primary" data-action="start" data-level="${id}">開始任務</button><button class="btn btn-secondary" data-action="map">回闖關地圖</button></div></aside>
     </div>
     <section id="game-stage" class="panel game-stage hidden"></section>`;
