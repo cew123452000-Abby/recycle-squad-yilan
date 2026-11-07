@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#156b55">
+  <meta name="description" content="適合國小學生學習紙餐具清理、分類與堆疊的三關互動遊戲。">
+  <title>紙餐具清分疊大作戰</title>
+  <link rel="icon" href="assets/scenes/scene-03-03.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="hub-return" href="../../index.html" aria-label="返回循環特攻隊宜蘭任務總地圖">返回循環特攻隊總地圖</a>
+  <a class="skip-link" href="#app">跳到主要內容</a>
+  <header class="topbar">
+    <button class="brand" data-action="home" aria-label="回首頁">
+      <span class="brand-mark" aria-hidden="true">♻</span>
+      <span><b>紙餐具清分疊大作戰</b><small>清理・分類・堆疊</small></span>
+    </button>
+    <div class="score-pill" aria-live="polite"><span>勇士積分</span><b id="header-score">0</b><span>/100</span></div>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer>
+    <p>紙餐具清、分、疊，回收整齊又省空間！</p>
+    <small>教學提醒：實際分類仍應依所在地環保局及清運單位規定調整。</small>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#087f5b">
+  <title>循環特攻隊：搶救資源星球！</title>
+  <link rel="icon" href="assets/thumbs/paper.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#mission-map">跳到任務地圖</a>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">宜蘭資源回收任務總部</p>
+      <h1>循環特攻隊：搶救資源星球！</h1>
+      <p class="subtitle">清分疊、完包警收，回收分類我最行！</p>
+    </div>
+    <div class="hero-actions">
+      <div class="progress-card" aria-live="polite">
+        <span>任務進度</span>
+        <strong id="progress-text">0 / 3</strong>
+        <div class="progress-track"><span id="progress-bar"></span></div>
+      </div>
+      <button class="teacher-button" id="teacher-toggle" type="button" aria-pressed="false">教師快速預覽</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="mission-intro" aria-labelledby="map-title">
+      <div>
+        <p class="eyebrow">從北到南，完成三站任務</p>
+        <h2 id="map-title">宜蘭循環任務地圖</h2>
+      </div>
+      <p>從頭城出發，依序前往五結與蘇澳。完成前一站，循環能量步道就會開啟下一站！</p>
+    </section>
+
+    <section class="map-shell" id="mission-map" aria-label="宜蘭三站闖關地圖">
+      <img class="map-art" src="assets/map/yilan-recycling-adventure.png" alt="宜蘭山海間的資源回收冒險地圖，設有頭城、五結與蘇澳三座任務平台">
+      <div class="map-shade" aria-hidden="true"></div>
+
+      <article class="mission-node toucheng" data-mission="paper">
+        <div class="location-pin"><span>第 1 站</span><strong>頭城</strong></div>
+        <div class="mission-card">
+          <img src="assets/thumbs/paper.png" alt="紙類分類任務插圖">
+          <div class="card-copy">
+            <span class="status-pill" data-status="paper">出發點</span>
+            <h3>紙類回收大冒險</h3>
+            <p>辨識、整理、分類與貯放，成為紙類回收達人。</p>
+            <a class="mission-button" data-link="paper" href="games/paper/index.html">前往頭城任務</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="mission-node wujie locked" data-mission="tableware">
+        <div class="location-pin"><span>第 2 站</span><strong>五結</strong></div>
+        <div class="mission-card">
+          <img src="assets/thumbs/tableware.png" alt="紙餐具清分疊任務插圖">
+          <div class="card-copy">
+            <span class="status-pill" data-status="tableware">尚未解鎖</span>
+            <h3>紙餐具清分疊大作戰</h3>
+            <p>學會「清理、分類、堆疊」，讓紙餐具整齊回收。</p>
+            <a class="mission-button" data-link="tableware" href="games/tableware/index.html" aria-disabled="true" tabindex="-1">完成頭城後解鎖</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="mission-node suao locked" data-mission="pressure">
+        <div class="location-pin"><span>第 3 站</span><strong>蘇澳</strong></div>
+        <div class="mission-card">
+          <img src="assets/thumbs/pressure.png" alt="高壓容器完包警收任務插圖">
+          <div class="card-copy">
+            <span class="status-pill" data-status="pressure">尚未解鎖</span>
+            <h3>高壓容器完包警收大作戰</h3>
+            <p>記住「完、包、警、收」，安全交付回收人員。</p>
+            <a class="mission-button" data-link="pressure" href="games/pressure/index.html" aria-disabled="true" tabindex="-1">完成五結後解鎖</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="planet-message" id="planet-message" hidden>
+        <span aria-hidden="true">★</span>
+        <strong>資源星球獲救了！</strong>
+        <p>你完成三站任務，成為最棒的循環特攻隊員！</p>
+      </div>
+    </section>
+
+    <section class="how-to" aria-labelledby="how-title">
+      <div>
+        <p class="eyebrow">操作方式</p>
+        <h2 id="how-title">三步開始任務</h2>
+      </div>
+      <ol>
+        <li><strong>看影片</strong><span>先完成每站的中文配音與字幕學習影片。</span></li>
+        <li><strong>玩關卡</strong><span>依序挑戰互動任務，錯誤時可立即再練習。</span></li>
+        <li><strong>回地圖</strong><span>完成一站後回到此頁，下一站會自動解鎖。</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <strong>循環特攻隊任務口訣</strong>
+    <span>紙類分清楚・紙餐具清分疊・高壓容器完包警收</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
